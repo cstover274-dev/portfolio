@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href, fmtDate } from '../../lib/site.js';
+import { getPortfolio } from '../../lib/portfolio.js';
+import { writeupFor } from '../../lib/research.js';
+import research from '../../data/research.json';
+
+const p = getPortfolio();
+const sector = { grid: 'energy', gas: 'energy', defense: 'aero', commercial: 'aero', software: 'software' };
+
+const owned = p.rows.map((r) => {
+  const wu = writeupFor(r.ticker) ?? {};
+  const full = wu.status === 'full';
+  return {
+    name: r.name, ticker: r.ticker, leg: r.leg, status: 'owned',
+    link: href(`/holdings/${r.ticker.toLowerCase()}/`),
+    research: full ? 'Full write-up' : 'Preliminary thesis',
+    date: full ? (wu.published ? fmtDate(wu.published) : '') : `${fmtDate(wu.thesisDate)} · full write-up ${wu.fullDue}`,
+  };
+});
+const passed = research.passed.map((x) => ({ ...x, status: 'passed', research: x.reason }));
+const rows = [...owned, ...passed];
+const statusLabel = { owned: 'Owned', watching: 'Watching', passed: 'Passed' };
+---
+<Base title="Research library" section="research">
+  <section class="page-head">
+    <h1>Research library</h1>
+    <p>Every company I've researched, whether I own it, am watching it, or passed on it. A pass comes with the reason.</p>
+  </section>
+
+  <div class="filters" role="group" aria-label="Filter the list">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="owned" aria-pressed="false">Owned</button>
+    <button type="button" data-filter="passed" aria-pressed="false">Passed</button>
+    <button type="button" data-filter="energy" aria-pressed="false">Energy</button>
+    <button type="button" data-filter="aero" aria-pressed="false">Aerospace and defense</button>
+    <button type="button" data-filter="software" aria-pressed="false">Defense software</button>
+  </div>
+
+  <div class="table-scroll">
+    <table style="min-width: 860px">
+      <thead>
+        <tr><th scope="col">Company</th><th scope="col">Leg</th><th scope="col">Status</th><th scope="col">Research</th><th scope="col">Date</th></tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr data-tags={`${r.status} ${sector[r.leg]}`}>
+            <td>{r.link ? <a class="name" href={r.link}>{r.name}</a> : <strong>{r.name}</strong>} <span class="muted">{r.ticker}</span></td>
+            <td>{p.legName(r.leg)}</td>
+            <td><span class={`tag ${r.status}`}>{statusLabel[r.status]}</span></td>
+            <td>{r.link ? <a href={r.link}>{r.research}</a> : r.research}</td>
+            <td>{r.date}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note" style="margin-top: 20px">A company appears here once it has a write-up or a documented pass.</p>
+
+  <script>
+    const buttons = document.querySelectorAll('.filters button');
+    const rows = document.querySelectorAll('tbody tr');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        rows.forEach((row) => {
+          row.hidden = filter !== 'all' && !row.dataset.tags.split(' ').includes(filter);
+        });
+      });
+    });
+  </script>
+</Base>

@@ -1,0 +1,169 @@
+---
+import Base from '../layouts/Base.astro';
+import { href, fmtDate, pct, usd } from '../lib/site.js';
+import { getPortfolio } from '../lib/portfolio.js';
+import { writeups, writeupFor } from '../lib/research.js';
+import research from '../data/research.json';
+
+const p = getPortfolio();
+const slices = [...p.rows, p.cash];
+
+// Donut: each holding takes a slice of the circle equal to its weight.
+let at = 0;
+const stops = slices.map((s) => {
+  const from = at;
+  at += s.weight;
+  return `${s.color} ${from.toFixed(2)}% ${at.toFixed(2)}%`;
+});
+const donut = `conic-gradient(${stops.join(', ')})`;
+const donutLabel = 'Holdings by weight: ' + slices.map((s) => `${s.short ?? 'cash'} ${pct(s.weight)}`).join(', ');
+
+// Leg bars share one scale so they can be compared by eye.
+const scale = Math.max(35, Math.ceil(Math.max(...p.legs.map((l) => Math.max(l.weight, l.band[1]))) / 5) * 5);
+const w = (n) => `${Math.min(100, (n / scale) * 100).toFixed(1)}%`;
+const statusLabel = { under: 'Under band', in: 'In band', over: 'Over band' };
+
+const latest = writeups.find((x) => x.status === 'full') ?? writeups[0];
+const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
+---
+<Base section="portfolio">
+  <section style="padding: 56px 0 40px">
+    <p class="eyebrow">Long-only equity · Real money · Built out over time</p>
+    <h1 style="max-width: 820px">Long-term positions in energy infrastructure, aerospace and defense, and the software defense runs on.</h1>
+    <p style="margin-top: 16px; max-width: 720px; font-size: 17px; line-height: 1.6; color: var(--body)">
+      This is my own money in a small number of companies I've researched. Every holding has a written thesis dated before the outcome, and I post an update after each earnings report.
+    </p>
+  </section>
+
+  <dl class="facts" style="border-top: 1px solid var(--rule); margin: 0">
+    <div><dt>Holdings</dt><dd>{p.rows.length} + cash</dd></div>
+    <div><dt>Largest position</dt><dd>{p.largest.ticker} {pct(p.largest.weight)}</dd></div>
+    <div><dt>Defense-budget exposure (cap {p.defenseCap}%)</dt><dd>{pct(p.defense)}</dd></div>
+    <div><dt>Track record starts</dt><dd>{fmtDate(p.launchDate)}</dd></div>
+  </dl>
+
+  <section class="section">
+    <h2>Allocation</h2>
+    <p class="lede">Click a holding to open its research. Weights use market value, cash included.</p>
+    <div class="split">
+      <div class="donut-block">
+        <div class="donut" role="img" aria-label={donutLabel} style={`background: ${donut}`}>
+          <div><strong>{p.rows.length}</strong><span>holdings + cash</span></div>
+        </div>
+        <ul class="legend">
+          {p.rows.map((r) => (
+            <li>
+              <a href={href(`/holdings/${r.ticker.toLowerCase()}/`)}>
+                <i style={`background: ${r.color}`}></i>
+                <span class="label">{r.name} ({r.ticker})</span>
+                <b>{pct(r.weight)}</b>
+              </a>
+            </li>
+          ))}
+          <li>
+            <div>
+              <i style={`background: ${p.cash.color}`}></i>
+              <span class="label">Cash (held in {p.cash.heldIn})</span>
+              <b>{pct(p.cash.weight)}</b>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="legs">
+        <h3>Weight vs target, by leg</h3>
+        {p.legs.map((l) => (
+          <div>
+            <div class="leg-row">
+              <span><strong>{l.name}</strong> <span class="muted">{l.id === 'cash' ? p.cash.heldIn : l.tickers.join(', ')}</span></span>
+              <span class="num">
+                {pct(l.weight)} <span class="muted">vs {l.target}% target</span>
+                <span class={`tag ${l.status}`}>{statusLabel[l.status]}</span>
+              </span>
+            </div>
+            <div class="bar">
+              <div class="band" style={`left: ${w(l.band[0])}; width: ${w(l.band[1] - l.band[0])}`}></div>
+              <div class="fill" style={`width: ${w(l.weight)}`}></div>
+              <div class="target" style={`left: ${w(l.target)}`}></div>
+            </div>
+          </div>
+        ))}
+        <p class="small">Shaded: allowed band. Line: target. Bar: current weight. Scale 0% to {scale}%.</p>
+        <p class="note">Build-out phase: the portfolio launched with five holdings bought before the mandate. New money goes to underweight legs first; nothing is sold just to hit a target.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Holdings</h2>
+    <div class="table-scroll">
+      <table class="num" style="min-width: 860px">
+        <thead>
+          <tr>
+            <th scope="col">Holding</th>
+            <th scope="col">Leg</th>
+            <th scope="col" class="right">Weight</th>
+            <th scope="col">Bought</th>
+            <th scope="col">Tracked since</th>
+            <th scope="col" class="right">Return since tracked</th>
+            <th scope="col">Research</th>
+          </tr>
+        </thead>
+        <tbody>
+          {p.rows.map((r) => {
+            const wu = writeupFor(r.ticker);
+            const link = href(`/holdings/${r.ticker.toLowerCase()}/`);
+            return (
+              <tr>
+                <td><a class="name" href={link}>{r.name}</a> <span class="muted">{r.ticker}</span></td>
+                <td>{p.legName(r.leg)}</td>
+                <td class="right">{pct(r.weight)}</td>
+                <td>{fmtDate(r.bought.date)} · {usd(r.bought.price)}</td>
+                <td>{fmtDate(r.tracked.date)}{r.tracked.price ? ` · ${usd(r.tracked.price)}` : ''}</td>
+                <td class="right">{r.sinceTracked === null ? <span class="muted">From launch</span> : pct(r.sinceTracked)}</td>
+                <td><a href={link}>{wu?.status === 'full' ? 'Full write-up' : 'Preliminary thesis'}</a></td>
+              </tr>
+            );
+          })}
+          <tr>
+            <td><strong>Cash</strong> <span class="muted">{p.cash.heldIn}</span></td>
+            <td>Held in a T-bill fund</td>
+            <td class="right">{pct(p.cash.weight)}</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top: 12px">Bought: actual purchase date and average price, backed by the trade confirmation. Tracked since: the date and price all performance on this site uses.</p>
+  </section>
+
+  <section class="section">
+    <h2>Performance</h2>
+    <p class="lede">Measured from {fmtDate(p.launchDate)} against a sector blend matching the target allocation ({p.benchmark.blend.map((b) => b.ticker).join(', ')}) and against the S&amp;P 500 ({p.benchmark.market}). Total return, dividends included.</p>
+    <p class="note">The chart appears here once there's enough history to plot. No returns are shown for any period before the tracking date.</p>
+  </section>
+
+  <section class="section split" style="padding-bottom: 0">
+    <div>
+      <h2 style="margin-bottom: 16px">Latest research</h2>
+      <a class="card" href={href(`/holdings/${latest.ticker.toLowerCase()}/`)}>
+        <span class="small">{latest.status === 'full' ? 'Full write-up' : 'Preliminary thesis'}</span>
+        <span class="title">{latestHolding.name} ({latest.ticker})</span>
+        <span class="summary">{latest.summary ?? latest.think}</span>
+      </a>
+    </div>
+    <div>
+      <h2 style="margin-bottom: 16px">Coming up</h2>
+      <ul class="dated">
+        {research.upcoming.map((u) => (
+          <li>
+            <time datetime={u.date}>{fmtDate(u.date)}</time>
+            <span class="what">{u.short}</span>
+            {!u.confirmed && <span class="small">est.</span>}
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top: 12px; font-size: 15px"><a href={href('/schedule/')}>Full schedule</a></p>
+    </div>
+  </section>
+</Base>

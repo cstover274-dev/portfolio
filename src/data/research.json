@@ -1,0 +1,43 @@
+{
+  "upcoming": [
+    {
+      "date": "2027-01-12",
+      "label": "AAR fiscal Q2 earnings update",
+      "short": "AAR earnings update",
+      "confirmed": false
+    },
+    {
+      "date": "2027-01-20",
+      "label": "Q4 2026 quarterly letter",
+      "short": "Q4 2026 quarterly letter",
+      "confirmed": true
+    },
+    {
+      "date": "2027-01-27",
+      "label": "Kinder Morgan Q4 and CACI fiscal Q2 updates",
+      "short": "Kinder Morgan and CACI updates",
+      "confirmed": false
+    },
+    {
+      "date": "2027-02-09",
+      "label": "Eaton Q4 update",
+      "short": "Eaton earnings update",
+      "confirmed": false
+    },
+    {
+      "date": "2027-03-01",
+      "label": "Kratos Q4 update",
+      "short": "Kratos earnings update",
+      "confirmed": false
+    }
+  ],
+  "passed": [
+    {
+      "name": "ServiceNow",
+      "ticker": "NOW",
+      "leg": "software",
+      "reason": "Screened out: federal is about 9% of revenue, short of the 50% defense filter",
+      "date": "Nov 2026"
+    }
+  ]
+}

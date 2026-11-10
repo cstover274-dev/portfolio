@@ -1,0 +1,11 @@
+{
+  "asOf": "2026-11-06",
+  "note": "Closing prices. Replaced by the daily update once the site is live.",
+  "closes": {
+    "AIR": 109.21,
+    "CACI": 611.16,
+    "KMI": 29.96,
+    "KTOS": 35.1,
+    "ETN": 341.72
+  }
+}

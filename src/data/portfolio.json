@@ -1,0 +1,180 @@
+{
+  "launchDate": "2026-11-11",
+  "unitsNote": "Units are share counts scaled so the portfolio equals 100 at launch. Weights and returns are exact; no dollar amounts are stored.",
+  "legs": [
+    {
+      "id": "grid",
+      "name": "Grid equipment",
+      "target": 25,
+      "band": [
+        20,
+        30
+      ],
+      "view": "Grid spending is structural and outlasts the AI cycle."
+    },
+    {
+      "id": "gas",
+      "name": "Gas for power",
+      "target": 20,
+      "band": [
+        15,
+        25
+      ],
+      "view": "Pipelines are toll roads with two demand engines: power generation and LNG exports."
+    },
+    {
+      "id": "defense",
+      "name": "Defense supply chain",
+      "target": 20,
+      "band": [
+        15,
+        25
+      ],
+      "view": "Munitions shortfalls are a capacity gap that gets funded regardless of the next conflict."
+    },
+    {
+      "id": "commercial",
+      "name": "Commercial aftermarket",
+      "target": 10,
+      "band": [
+        5,
+        15
+      ],
+      "view": "Older fleets keep flying well past the delivery recovery."
+    },
+    {
+      "id": "software",
+      "name": "Defense software",
+      "target": 20,
+      "band": [
+        15,
+        25
+      ],
+      "view": "Integrators already inside defense programs capture the shift to software, at lower valuations than the AI names."
+    },
+    {
+      "id": "cash",
+      "name": "Cash",
+      "target": 5,
+      "band": [
+        0,
+        10
+      ],
+      "view": "Funds new names, adds below target price, and rebalancing."
+    }
+  ],
+  "defenseLegs": [
+    "defense",
+    "software"
+  ],
+  "defenseCap": 45,
+  "benchmark": {
+    "blend": [
+      {
+        "ticker": "GRID",
+        "weight": 25
+      },
+      {
+        "ticker": "MLPX",
+        "weight": 20
+      },
+      {
+        "ticker": "ITA",
+        "weight": 50
+      },
+      {
+        "ticker": "BIL",
+        "weight": 5
+      }
+    ],
+    "market": "SPY"
+  },
+  "holdings": [
+    {
+      "ticker": "AIR",
+      "name": "AAR Corp",
+      "short": "AAR",
+      "exchange": "NYSE",
+      "leg": "commercial",
+      "units": 0.239077,
+      "bought": {
+        "date": "2026-10-20",
+        "price": 97.5
+      },
+      "tracked": {
+        "date": "2026-11-11",
+        "price": null
+      }
+    },
+    {
+      "ticker": "CACI",
+      "name": "CACI International",
+      "short": "CACI",
+      "exchange": "NYSE",
+      "leg": "software",
+      "units": 0.037296,
+      "bought": {
+        "date": "2025-02-11",
+        "price": 375.0
+      },
+      "tracked": {
+        "date": "2026-11-11",
+        "price": null
+      }
+    },
+    {
+      "ticker": "KMI",
+      "name": "Kinder Morgan",
+      "short": "Kinder Morgan",
+      "exchange": "NYSE",
+      "leg": "gas",
+      "units": 0.551373,
+      "bought": {
+        "date": "2025-02-11",
+        "price": 25.37
+      },
+      "tracked": {
+        "date": "2026-11-11",
+        "price": null
+      }
+    },
+    {
+      "ticker": "KTOS",
+      "name": "Kratos Defense",
+      "short": "Kratos",
+      "exchange": "Nasdaq",
+      "leg": "defense",
+      "units": 0.424848,
+      "bought": {
+        "date": "2025-02-11",
+        "price": 32.92
+      },
+      "tracked": {
+        "date": "2026-11-11",
+        "price": null
+      }
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton",
+      "short": "Eaton",
+      "exchange": "NYSE",
+      "leg": "grid",
+      "units": 0.030262,
+      "bought": {
+        "date": "2025-02-11",
+        "price": 308.11
+      },
+      "tracked": {
+        "date": "2026-11-11",
+        "price": null
+      }
+    }
+  ],
+  "cash": {
+    "label": "Cash",
+    "heldIn": "BIL",
+    "units": 9.324018,
+    "unitPrice": 1
+  }
+}

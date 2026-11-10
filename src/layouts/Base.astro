@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import { href, fmtDate } from '../lib/site.js';
+import { getPortfolio } from '../lib/portfolio.js';
+
+const { title, description, section } = Astro.props;
+const { asOf } = getPortfolio();
+const nav = [
+  { id: 'portfolio', label: 'Portfolio', path: '/' },
+  { id: 'research', label: 'Research', path: '/research/' },
+  { id: 'mandate', label: 'Mandate', path: '/mandate/' },
+  { id: 'schedule', label: 'Schedule', path: '/schedule/' },
+];
+const pageTitle = title ? `${title} | Collin Stover` : 'Collin Stover | Equity research portfolio';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description ?? 'A real-money, long-only equity portfolio and the research behind every holding.'} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={href('/')}>
+          <strong>Collin Stover</strong>
+          <span>Equity research portfolio</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          {nav.map((n) => (
+            <a href={href(n.path)} aria-current={n.id === section ? 'page' : undefined}>{n.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Personal portfolio shared for educational purposes. Nothing here is investment advice, and I own the securities discussed.</p>
+        <p>Prices as of close, {fmtDate(asOf)}</p>
+      </div>
+    </footer>
+  </body>
+</html>

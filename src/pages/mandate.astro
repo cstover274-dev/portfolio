@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPortfolio } from '../lib/portfolio.js';
+
+const p = getPortfolio();
+const blend = p.benchmark.blend.map((b) => `${b.weight}% ${b.ticker}`).join(', ');
+---
+<Base title="Mandate" section="mandate">
+  <section class="page-head">
+    <h1>Mandate</h1>
+    <p>A long-only, concentrated portfolio of 12 to 18 holdings, held for 3+ years. It invests where I believe spending is structural but priced as temporary: supply bottlenecks and long backlogs the market treats as a short-term story.</p>
+  </section>
+
+  <dl class="facts compact" style="border-top: 1px solid var(--rule); margin: 0">
+    <div><dt>Style</dt><dd>Long-only, fundamental</dd></div>
+    <div><dt>Holdings when fully built</dt><dd>12 to 18</dd></div>
+    <div><dt>Holding period</dt><dd>3+ years, 1 year minimum where possible</dd></div>
+    <div><dt>Position limits</dt><dd>10% at purchase, 15% hard cap</dd></div>
+    <div><dt>Defense-budget exposure</dt><dd>Capped at {p.defenseCap}%</dd></div>
+    <div><dt>Benchmarks</dt><dd>Sector blend and S&amp;P 500</dd></div>
+  </dl>
+
+  <section class="section">
+    <h2>Five legs and what I believe about each</h2>
+    <div class="table-scroll">
+      <table style="min-width: 820px; font-size: 15px">
+        <thead>
+          <tr><th scope="col">Leg</th><th scope="col" class="right">Target</th><th scope="col">Band</th><th scope="col">I think</th></tr>
+        </thead>
+        <tbody class="num">
+          {p.legs.map((l) => (
+            <tr><td><strong>{l.name}</strong></td><td class="right">{l.target}%</td><td>{l.band[0]}% to {l.band[1]}%</td><td>{l.view}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Rules</h2>
+    <div class="rules">
+      <div>
+        <h3>Buying</h3>
+        <ol>
+          <li>The business fits its leg's thesis</li>
+          <li>A written variant view: market thinks, I think, right when, wrong if</li>
+          <li>Price leaves upside to my fair value</li>
+        </ol>
+        <p>Weight that can't be filled waits in cash.</p>
+      </div>
+      <div>
+        <h3>Selling</h3>
+        <ul>
+          <li>A "wrong if" condition is met</li>
+          <li>Price passes fair value with nothing left in the thesis</li>
+          <li>A position grows past the 15% cap</li>
+        </ul>
+        <p>A falling price triggers a review, not a sale.</p>
+      </div>
+      <div>
+        <h3>Rebalancing</h3>
+        <ol>
+          <li>Act only when a leg leaves its band</li>
+          <li>New cash and dividends go to underweight legs first</li>
+          <li>Trim only if that isn't enough, checking holding periods</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom: 0">
+    <h2 style="margin-bottom: 12px">How performance is judged</h2>
+    <p style="max-width: 760px; font-size: 16px; line-height: 1.6">Two comparisons, side by side. Against the S&amp;P 500 ({p.benchmark.market}): was this worth running instead of an index fund? Against a sector blend weighted like my targets ({blend}): did my stock picks beat the sectors I chose? Both are total return, dividends included. Returns count from each holding's tracked-since date, never earlier.</p>
+  </section>
+</Base>

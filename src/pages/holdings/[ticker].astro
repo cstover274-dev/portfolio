@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href, fmtDate, pct, usd } from '../../lib/site.js';
+import { getPortfolio } from '../../lib/portfolio.js';
+import { writeupFor } from '../../lib/research.js';
+
+export function getStaticPaths() {
+  return getPortfolio().rows.map((r) => ({ params: { ticker: r.ticker.toLowerCase() } }));
+}
+
+const p = getPortfolio();
+const h = p.rows.find((r) => r.ticker.toLowerCase() === Astro.params.ticker);
+const wu = writeupFor(h.ticker) ?? {};
+const leg = p.legs.find((l) => l.id === h.leg);
+const full = wu.status === 'full';
+const Content = wu.Content;
+const files = wu.files ?? {};
+const fileHref = (f) => (f.startsWith('http') ? f : href(f));
+const log = wu.log ?? [];
+---
+<Base title={`${h.name} (${h.ticker})`} description={wu.think} section="research">
+  <nav class="crumb" aria-label="Breadcrumb"><a href={href('/')}>Portfolio</a> <span class="muted">/ {h.short}</span></nav>
+
+  <section class="holding-head">
+    <div class="line">
+      <h1>{h.name}</h1>
+      <span>{h.ticker} · {h.exchange} · {leg.name}</span>
+      <span class="tag owned">Owned</span>
+      {!full && <span class="tag prelim">Preliminary thesis</span>}
+    </div>
+    {full
+      ? <p>Full write-up{wu.published ? ` published ${fmtDate(wu.published)}` : ''}. Not edited since; changes appear in the update log.</p>
+      : <p>Preliminary thesis dated {fmtDate(wu.thesisDate)}. Full write-up {wu.fullDue}.</p>}
+  </section>
+
+  <section class="section split" style="gap: 40px">
+    <div style="flex-basis: 340px">
+      <p class="eyebrow">At a glance</p>
+      <dl class="glance">
+        {wu.stance && <div><dt>Stance</dt><dd><strong>{wu.stance}</strong></dd></div>}
+        <div><dt>Bought</dt><dd>{fmtDate(h.bought.date)} · {usd(h.bought.price)}</dd></div>
+        <div><dt>Tracked since</dt><dd>{fmtDate(h.tracked.date)}{h.tracked.price ? ` · ${usd(h.tracked.price)}` : ''}</dd></div>
+        <div><dt>Price ({fmtDate(p.asOf)})</dt><dd>{usd(h.price)}</dd></div>
+        {h.sinceTracked !== null && <div><dt>Return since tracked</dt><dd>{pct(h.sinceTracked)}</dd></div>}
+        <div><dt>Weight / target for the leg</dt><dd>{pct(h.weight)} / {leg.target}%</dd></div>
+      </dl>
+    </div>
+    <div style="flex-basis: 480px">
+      {wu.points?.length > 1 ? (
+        <>
+          <p class="eyebrow">The thesis in {wu.points.length} points</p>
+          <ol class="points">{wu.points.map((pt) => <li>{pt}</li>)}</ol>
+        </>
+      ) : (
+        <>
+          <p class="eyebrow">The short version</p>
+          <p class="short">{wu.points?.[0] ?? wu.think}</p>
+        </>
+      )}
+      {(files.report || files.model || files.article) && (
+        <div class="buttons">
+          {files.report && <a class="button primary" href={fileHref(files.report)}>Full report (PDF)</a>}
+          {files.model && <a class="button" href={fileHref(files.model)}>Model (Excel)</a>}
+          {files.article && <a class="button" href={fileHref(files.article)}>Seeking Alpha article</a>}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Where I differ from the market</h2>
+    <dl class="view">
+      <div><dt>Market thinks</dt><dd>{wu.market}</dd></div>
+      <div><dt>I think</dt><dd>{wu.think}</dd></div>
+      <div><dt>Right when</dt><dd>{wu.rightWhen}</dd></div>
+      <div><dt>Wrong if</dt><dd>{wu.wrongIf}</dd></div>
+    </dl>
+  </section>
+
+  {Content && <div class="prose"><Content /></div>}
+
+  <section class="section split" style="padding-bottom: 0">
+    {!full && (
+      <div>
+        <h2 style="font-size: 22px; margin-bottom: 12px">What the full write-up adds</h2>
+        <p style="font-size: 15px; line-height: 1.6; color: var(--body)">A value range with bear, base and bull cases, sized catalysts and risks, and a worst case that sets the position size. This preliminary thesis stays on the page, dated, when the full version goes up.</p>
+      </div>
+    )}
+    <div>
+      <h2 style="font-size: 22px; margin-bottom: 12px">Update log</h2>
+      {wu.nextUpdate && <p class="small" style="margin-bottom: 8px">{wu.nextUpdate}</p>}
+      {log.length ? (
+        <ul class="dated">
+          {log.map((e) => <li><time datetime={e.date}>{fmtDate(e.date)}</time><span class="what">{e.note}</span></li>)}
+        </ul>
+      ) : <p class="small">No updates yet.</p>}
+    </div>
+  </section>
+</Base>

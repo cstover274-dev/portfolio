@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { fmtDate } from '../lib/site.js';
+import research from '../data/research.json';
+
+const posts = [
+  ['Earnings update', "Within 7 days of each holding's results", 'Results vs my estimates, thesis check, value range, action'],
+  ['Quarterly letter', 'By the 20th of the month after quarter end', 'Weights vs bands, performance vs both benchmarks, changes made'],
+  ['Annual review', 'Every January, starting 2028', "Every holding re-underwritten at today's price; allocation revisited"],
+  ['Event update', 'Within a week of a trigger', 'Guidance cut, acquisition, management change, a "wrong if" signal, or a drop over 20%'],
+];
+---
+<Base title="Review schedule" section="schedule">
+  <section class="page-head">
+    <h1>Review schedule</h1>
+    <p>When to expect new research. Every holding gets a dated update after its earnings, and the portfolio gets a letter every quarter.</p>
+  </section>
+
+  <section class="section">
+    <h2>What I publish, and when</h2>
+    <div class="table-scroll">
+      <table style="min-width: 720px; font-size: 15px">
+        <thead><tr><th scope="col">Post</th><th scope="col">When</th><th scope="col">What it covers</th></tr></thead>
+        <tbody>
+          {posts.map(([post, when, covers]) => <tr><td><strong>{post}</strong></td><td>{when}</td><td>{covers}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom: 0">
+    <h2>Coming up</h2>
+    <p class="lede">Est. means the company hasn't confirmed its earnings date yet; dates move when it does.</p>
+    <ul class="dated" style="max-width: 720px">
+      {research.upcoming.map((u) => (
+        <li>
+          <time datetime={u.date}>{fmtDate(u.date)}</time>
+          <span class="what">{u.label}</span>
+          <span class={`tag ${u.confirmed ? 'set' : 'est'}`}>{u.confirmed ? 'Set' : 'Est.'}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
