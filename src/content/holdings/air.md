@@ -7,7 +7,7 @@ researchAsOf: "Oct 26, 2026"
 summary: "AAR paid a full price for MRO Holdings, but the market still values the combined company like the old AAR."
 points:
   - "AAR’s 65% purchase of MRO nearly triples its airframe repair capacity and lifts its combined EBITDA margin from about 12% to 16% before synergies."
-  - "Most of AIR’s 2026 slide was sector-wide. The deal itself cost about 7-9%, roughly $340-400M, a fair haircut for a deal AAR paid full price for."
+  - "Most of AIR’s 2026 slide was sector-wide. The deal itself cost about 7-10%, roughly $340-470M, a fair haircut for a deal AAR paid full price for."
   - "At about 12.6x EBITDA on Oct 26, the combined company trades below AAR’s own pre-deal multiple of 14.6x, despite margins approaching VSE’s, which trades at 23.5x."
   - "Leverage peaks near 3.8x at closing but falls to around 2.4x by FY2029 in my base case. Interest rates barely move it; cash conversion does."
   - "My 12-month target is about $157, 61% above the Oct 26 price, weighting a 15x EBITDA multiple and a DCF equally, but year-one accretion depends on how fast synergies arrive."
@@ -146,8 +146,8 @@ which makes the deal-specific penalty small and measurable. Volume ran
 two to seven times normal for five trading days after the announcement,
 so I measure the reaction from Sept 28 to Oct 5. Over that stretch, AIR
 fell 11.2%, while VSE, which made no acquisition, fell 3.7% and HEICO
-fell 1.0%, a gap of about 7-9 points. On AAR’s pre-deal market value of
-about \$4.6 billion, that’s roughly \$340-400 million. Because AAR
+fell 1.0%, a gap of about 7-10 points. On AAR’s pre-deal market value of
+about \$4.6 billion, that’s roughly \$340-470 million. Because AAR
 posted strong earnings at the same time, the true penalty may be
 somewhat larger. After Oct 5, AIR fell 4.8% through Oct 26, in line with
 the 4.7% average for VSE and HEICO. For a deal this size, that’s a
@@ -694,7 +694,7 @@ rather than projecting today’s pace.
 | **Catalyst**                   | **Expected timing**                | **Estimated price impact**        | **How I’ll know**                                                                                                             |
 |--------------------------------|------------------------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | Q2 FY2027 report               | Late Dec 2026 or early Jan 2027                | ±7% (my estimate)                 | Adjusted operating cash flow as a share of EBITDA. Above 30% supports the base case; near 28% is a warning                    |
-| Deal closes                    | By Feb 2027                        | Up to +7%                         | Closing 8-K. Removes the deal overhang; the measured deal penalty was about 7 to 9 points                                     |
+| Deal closes                    | By Feb 2027                        | Up to +7%                         | Closing 8-K. Removes the deal overhang; the measured deal penalty was about 7 to 10 points                                     |
 | First full combined quarter    | Q4 FY2027 report, around July 2027 | About +9%                         | Combined EBITDA margin near 16%. Re-rating from today’s 14.1x to 15x is worth about \$126                                     |
 | First synergy update           | Same report                        | About +5%                         | Run-rate savings on track for 25% in FY2028 (about \$19M, worth about \$6 a share at 15x)                                     |
 | FAA licensing equivalency list | Pending, no date set               | About -9% if MRO’s countries miss | FAA rulemaking. If El Salvador, Mexico or Colombia don’t qualify, MRO’s margin could drop up to 5 points (about \$10 a share) |
