@@ -1,0 +1,44 @@
+<svg class="chart" viewBox="0 0 760 380" role="img" aria-label="EV to EBITDA multiple against EBITDA margin for AAR, AAR plus MRO and four peers" xmlns="http://www.w3.org/2000/svg">
+<text x="0.0" y="18.0" text-anchor="start" class="t">AAR’s multiple lags its margins</text>
+<rect x="0" y="37" width="10" height="10" rx="2" fill="#2B63A8"/>
+<text x="16.0" y="46.0" text-anchor="start">Peers</text>
+<rect x="73.0" y="37" width="10" height="10" rx="2" fill="#B5532E"/>
+<text x="89.0" y="46.0" text-anchor="start">AAR</text>
+<rect x="132.0" y="37" width="10" height="10" rx="2" fill="#0A9480"/>
+<text x="148.0" y="46.0" text-anchor="start">AAR + MRO</text>
+<text x="0.0" y="70.0" text-anchor="start">EV / EBITDA</text>
+<line class="grid" x1="56" y1="322.0" x2="744" y2="322.0"/>
+<text x="48.0" y="326.0" text-anchor="end">10x</text>
+<line class="grid" x1="56" y1="273.2" x2="744" y2="273.2"/>
+<text x="48.0" y="277.2" text-anchor="end">15x</text>
+<line class="grid" x1="56" y1="224.4" x2="744" y2="224.4"/>
+<text x="48.0" y="228.4" text-anchor="end">20x</text>
+<line class="grid" x1="56" y1="175.6" x2="744" y2="175.6"/>
+<text x="48.0" y="179.6" text-anchor="end">25x</text>
+<line class="grid" x1="56" y1="126.8" x2="744" y2="126.8"/>
+<text x="48.0" y="130.8" text-anchor="end">30x</text>
+<line class="grid" x1="56" y1="78.0" x2="744" y2="78.0"/>
+<text x="48.0" y="82.0" text-anchor="end">35x</text>
+<text x="56.0" y="342.0" text-anchor="middle">5%</text>
+<text x="170.7" y="342.0" text-anchor="middle">10%</text>
+<text x="285.3" y="342.0" text-anchor="middle">15%</text>
+<text x="400.0" y="342.0" text-anchor="middle">20%</text>
+<text x="514.7" y="342.0" text-anchor="middle">25%</text>
+<text x="629.3" y="342.0" text-anchor="middle">30%</text>
+<text x="744.0" y="342.0" text-anchor="middle">35%</text>
+<text x="400.0" y="364.0" text-anchor="middle">EBITDA margin</text>
+<circle cx="308.3" cy="190.2" r="6" fill="#2B63A8" stroke="#fff" stroke-width="2"><title>VSE: 23.5x EV/EBITDA at a 16.0% margin</title></circle>
+<text x="320.3" y="194.2" text-anchor="start" class="v">VSE 23.5x</text>
+<circle cx="583.5" cy="107.3" r="6" fill="#2B63A8" stroke="#fff" stroke-width="2"><title>HEICO: 32.0x EV/EBITDA at a 28.0% margin</title></circle>
+<text x="595.5" y="111.3" text-anchor="start" class="v">HEICO 32.0x</text>
+<circle cx="675.2" cy="230.3" r="6" fill="#2B63A8" stroke="#fff" stroke-width="2"><title>FTAI: 19.4x EV/EBITDA at a 32.0% margin</title></circle>
+<text x="663.2" y="234.3" text-anchor="end" class="v">FTAI 19.4x</text>
+<circle cx="122.5" cy="256.6" r="6" fill="#2B63A8" stroke="#fff" stroke-width="2"><title>AerSale: 16.7x EV/EBITDA at a 7.9% margin</title></circle>
+<text x="134.5" y="260.6" text-anchor="start" class="v">AerSale 16.7x</text>
+<circle cx="189.0" cy="295.6" r="6" fill="#B5532E" stroke="#fff" stroke-width="2"><title>AAR, Oct 26: 12.7x EV/EBITDA at a 10.8% margin</title></circle>
+<text x="189.0" y="317.6" text-anchor="middle" class="v">AAR, Oct 26 12.7x</text>
+<circle cx="278.5" cy="296.6" r="6" fill="#0A9480" stroke="#fff" stroke-width="2"><title>AAR + MRO: 12.6x EV/EBITDA at a 14.7% margin</title></circle>
+<text x="290.5" y="300.6" text-anchor="start" class="v">AAR + MRO 12.6x</text>
+<circle cx="189.0" cy="276.9" r="6" fill="#fff" stroke="#B5532E" stroke-width="2"><title>AAR, Sept 28: 14.6x EV/EBITDA at a 10.8% margin</title></circle>
+<text x="177.0" y="280.9" text-anchor="end" class="v">AAR, Sept 28 14.6x</text>
+</svg>

@@ -4,7 +4,7 @@ import { href, fmtDate } from '../lib/site.js';
 import { getPortfolio } from '../lib/portfolio.js';
 
 const { title, description, section } = Astro.props;
-const { asOf } = getPortfolio();
+const { asOf, contact } = getPortfolio();
 const nav = [
   { id: 'portfolio', label: 'Portfolio', path: '/' },
   { id: 'research', label: 'Research', path: '/research/' },
@@ -46,7 +46,10 @@ const pageTitle = title ? `${title} | Collin Stover` : 'Collin Stover | Equity r
     <footer class="site-footer">
       <div class="wrap">
         <p>Personal portfolio shared for educational purposes. Nothing here is investment advice, and I own the securities discussed.</p>
-        <p>Prices as of close, {fmtDate(asOf)}</p>
+        <p>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a> · <a href={contact.linkedin}>LinkedIn</a><br />
+          Prices as of close, {fmtDate(asOf)}
+        </p>
       </div>
     </footer>
   </body>

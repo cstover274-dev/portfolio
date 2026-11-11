@@ -166,4 +166,14 @@ const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
       <p style="margin-top: 12px; font-size: 15px"><a href={href('/schedule/')}>Full schedule</a></p>
     </div>
   </section>
+
+  <section class="section" style="margin-top: 40px; padding-bottom: 0">
+    <h2 style="margin-bottom: 12px">About this project</h2>
+    <p style="max-width: 720px; font-size: 16px; line-height: 1.6; color: var(--body)">
+      This is a personal project. I'm doing it to get my research out where people can read it, and I'm open to feedback. If you think I've missed something or got a number wrong, I'd like to hear it.
+    </p>
+    <p style="margin-top: 12px; font-size: 16px">
+      <a href={`mailto:${p.contact.email}`}>{p.contact.email}</a> · <a href={p.contact.linkedin}>LinkedIn</a>
+    </p>
+  </section>
 </Base>

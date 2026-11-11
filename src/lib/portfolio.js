@@ -39,6 +39,7 @@ export function getPortfolio() {
     launchDate: data.launchDate,
     asOf: prices.asOf,
     benchmark: data.benchmark,
+    contact: data.contact,
     legName: (id) => data.legs.find((l) => l.id === id)?.name ?? id,
   };
 }

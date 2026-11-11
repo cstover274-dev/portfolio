@@ -38,6 +38,7 @@ h3 { font-size: 17px; font-weight: 600; }
 .site-footer { border-top: 1px solid var(--rule); margin-top: 64px; }
 .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 48px; padding-top: 32px; padding-bottom: 32px; font-size: 13px; color: var(--muted); }
 .site-footer p { max-width: 640px; line-height: 1.5; }
+.site-footer p:last-child { text-align: right; }
 
 /* Sections */
 .section { padding: 32px 0 40px; border-top: 1px solid var(--rule); }
@@ -135,6 +136,25 @@ ol.points { margin: 0; padding-left: 20px; font-family: var(--serif); font-size:
 .prose h3 { margin: 24px 0 8px; color: var(--ink); }
 .prose p { margin: 0 0 16px; }
 .prose:empty { display: none; }
+
+/* Long-form write-ups */
+.prose > p, .prose > ul, .prose > ol, .prose > h2, .prose > h3 { max-width: 760px; }
+.prose ul, .prose ol { margin: 0 0 16px; padding-left: 22px; }
+.prose li { margin-bottom: 8px; }
+.prose table { display: block; overflow-x: auto; margin: 8px 0 20px; font-size: 14px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.prose th { white-space: nowrap; }
+.prose td { min-width: 72px; }
+.prose p > em:only-child { font-size: 13px; color: var(--muted); }
+.prose figure { margin: 28px 0 8px; max-width: 760px; }
+
+/* Figures drawn by scripts/aar_charts.py */
+.chart { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--sans); font-size: 12px; fill: var(--muted); }
+.chart text.t { font-size: 15px; font-weight: 600; fill: var(--ink); }
+.chart text.v { font-weight: 500; fill: var(--ink); }
+.chart text.cat { font-size: 13px; fill: var(--ink); }
+.chart .grid { stroke: var(--soft); stroke-width: 1; }
+.chart .axis { stroke: #aeb6c0; stroke-width: 1; }
 
 /* Rules columns on the mandate page */
 .rules { display: flex; flex-wrap: wrap; gap: 32px; }

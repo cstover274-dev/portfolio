@@ -98,7 +98,7 @@
       "leg": "commercial",
       "units": 0.239077,
       "bought": {
-        "date": "2026-10-20",
+        "date": "2026-10-26",
         "price": 97.5
       },
       "tracked": {
@@ -176,5 +176,9 @@
     "heldIn": "BIL",
     "units": 9.324018,
     "unitPrice": 1
+  },
+  "contact": {
+    "email": "cstover274@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/collin-stover"
   }
 }

@@ -13,7 +13,10 @@ const h = p.rows.find((r) => r.ticker.toLowerCase() === Astro.params.ticker);
 const wu = writeupFor(h.ticker) ?? {};
 const leg = p.legs.find((l) => l.id === h.leg);
 const full = wu.status === 'full';
-const Content = wu.Content;
+const body = wu.body ? (await wu.body()).trim() : '';
+const range = wu.valueRange;
+const toward = (v) => (v / h.price - 1) * 100;
+const signed = (n) => (n >= 0 ? '+' : '\u2212') + Math.abs(n).toFixed(0) + '%';
 const files = wu.files ?? {};
 const fileHref = (f) => (f.startsWith('http') ? f : href(f));
 const log = wu.log ?? [];
@@ -29,7 +32,7 @@ const log = wu.log ?? [];
       {!full && <span class="tag prelim">Preliminary thesis</span>}
     </div>
     {full
-      ? <p>Full write-up{wu.published ? ` published ${fmtDate(wu.published)}` : ''}. Not edited since; changes appear in the update log.</p>
+      ? <p>{wu.researchAsOf ? `Research and prices as of ${wu.researchAsOf} unless noted. ` : ''}{wu.published ? `Published ${fmtDate(wu.published)}. ` : ''}Not edited since; changes appear in the update log.</p>
       : <p>Preliminary thesis dated {fmtDate(wu.thesisDate)}. Full write-up {wu.fullDue}.</p>}
   </section>
 
@@ -42,7 +45,10 @@ const log = wu.log ?? [];
         <div><dt>Tracked since</dt><dd>{fmtDate(h.tracked.date)}{h.tracked.price ? ` · ${usd(h.tracked.price)}` : ''}</dd></div>
         <div><dt>Price ({fmtDate(p.asOf)})</dt><dd>{usd(h.price)}</dd></div>
         {h.sinceTracked !== null && <div><dt>Return since tracked</dt><dd>{pct(h.sinceTracked)}</dd></div>}
+        {range && <div><dt>Value range: bear / base / bull</dt><dd><strong>${range.bear} / ${range.base} / ${range.bull}</strong></dd></div>}
+        {range && <div><dt>Return to base / to bear</dt><dd>{signed(toward(range.base))} / {signed(toward(range.bear))}</dd></div>}
         <div><dt>Weight / target for the leg</dt><dd>{pct(h.weight)} / {leg.target}%</dd></div>
+        {(wu.facts ?? []).map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
       </dl>
     </div>
     <div style="flex-basis: 480px">
@@ -77,7 +83,7 @@ const log = wu.log ?? [];
     </dl>
   </section>
 
-  {Content && <div class="prose"><Content /></div>}
+  {body && <section class="section"><h2>{full ? 'Full write-up' : 'Notes'}</h2><div class="prose" set:html={body} /></section>}
 
   <section class="section split" style="padding-bottom: 0">
     {!full && (
