@@ -10,7 +10,7 @@ points:
   - "Most of AIR’s 2026 slide was sector-wide. The deal itself cost about 7-9%, roughly $340-400M, a fair haircut for a deal AAR paid full price for."
   - "At about 12.6x EBITDA on Oct 26, the combined company trades below AAR’s own pre-deal multiple of 14.6x, despite margins approaching VSE’s, which trades at 23.5x."
   - "Leverage peaks near 3.8x at closing but falls to around 2.4x by FY2029 in my base case. Interest rates barely move it; cash conversion does."
-  - "My 12-month target is about $157, weighting a 15x EBITDA multiple and a DCF equally, but year-one accretion depends on how fast synergies arrive."
+  - "My 12-month target is about $157, 61% above the Oct 26 price, weighting a 15x EBITDA multiple and a DCF equally, but year-one accretion depends on how fast synergies arrive."
 valueRange: { bear: 78, base: 157, bull: 208 }
 facts:
   - label: "Market cap / enterprise value"
@@ -23,7 +23,7 @@ market: "AAR overpaid for MRO Holdings and took on too much debt to do it."
 think: "The market is half right. AAR paid a full price, but it still values the combined company like the old AAR, even though the deal nearly triples AAR’s airframe capacity and lifts margins toward peers that trade at almost twice its multiple."
 rightWhen: "The combined EBITDA margin is near 16% in the first two quarters after closing, AAR converts more than 40% of EBITDA to cash, and net leverage is below 3.0x by fiscal 2029."
 wrongIf: "Cash conversion stays near 28% through fiscal 2027 (trim), MRO’s margin falls below 24% (sell), or leverage isn’t on track for 3.0x by fiscal 2029 (review the position)."
-nextUpdate: "Next update expected after the fiscal Q2 earnings report."
+nextUpdate: "Next update expected within a week of the fiscal Q2 earnings report, due in late December or early January."
 files: {}               # report: /files/aar-report.pdf, model: /files/aar-model.xlsx, article: https://...
 log:
   - date: "2026-11-11"
@@ -206,8 +206,7 @@ to their margin profile,” and added that AAR doesn’t see wage pressure
 in MRO’s markets. Cheap labor is a real part of the story, and
 management says so, which makes MRO’s margin vulnerable to the offshore
 maintenance rules discussed in the risks section. Holmes also describes
-MRO’s turnaround times as industry leading. Speed is capacity: every day
-cut from heavy check frees a hangar line for the next plane, with no new
+MRO’s turnaround times as industry leading. Speed is capacity: every day cut from a heavy check frees a hangar line for the next plane, with no new
 building needed. Holmes cautioned that MRO’s turnaround times aren’t
 directly comparable to AAR’s, because the two handle different mixes of
 work, so I don’t put a number on the speed advantage. Finally, MRO runs
@@ -344,8 +343,7 @@ times the effect of the 2-point rate rise. Two things help: MRO
 generated \$203 million of adjusted operating cash flow in 2025, about
 71% of its expected 2026 EBITDA, with maintenance capex of only about 1%
 of sales, and AAR keeps all of MRO’s excess cash for the first two years
-before the sellers’ 35% share kicks in. AAR’s next report, expected in
-mid to late December, is the first check on cash conversion. The chart
+before the sellers’ 35% share kicks in. AAR’s next report, expected in late December or early January, is the first check on cash conversion. The chart
 below shows the path under each case.
 
 [[chart:aar-leverage]]
@@ -524,8 +522,7 @@ EBITDA turned into cash before interest, largely because its
 fast-growing parts business ties up cash in inventory. If that doesn’t
 improve, leverage stays above management’s 3.0x target even in fiscal
 2030. Slower paydown would leave less room to buy the rest of MRO and
-would likely delay the re-rating my target depends on. AAR’s December
-report is the first test.
+would likely delay the re-rating my target depends on. AAR’s next report is the first test.
 
 A demand peak: Part of today’s demand exists because Boeing and Airbus
 are delivering new jets late, so airlines keep older planes flying, and
@@ -547,7 +544,7 @@ the shortfall costs about \$9.50 a share at 15x. On the positive side,
 Holmes said AAR has already dropped unprofitable work at HAECO and
 replaced it with better contracts.
 
-Deal and financing terms: the deal still needs regulatory approval, and
+Deal and financing terms: The deal still needs regulatory approval, and
 the permanent debt hasn’t been priced; AAR’s \$700 million of 6.75%
 notes also mature in March 2029. AAR can buy the sellers’ remaining
 stake in stages: 30% in three 10% tranches on the second, third and
@@ -560,7 +557,7 @@ MRO gets more expensive. The sellers will also own about 12% of AAR, and
 their lock-ups expire in thirds at 6, 12 and 18 months after closing, so
 their selling could weigh on the shares.
 
-Customer concentration: about 90% of MRO’s sales go to U.S. customers,
+Customer concentration: About 90% of MRO’s sales go to U.S. customers,
 mostly large airlines, so losing a major contract or a customer in
 financial trouble would hurt. Those same airlines must now report their
 foreign heavy maintenance to the FAA, and if that scrutiny pushes them
@@ -696,14 +693,13 @@ rather than projecting today’s pace.
 
 | **Catalyst**                   | **Expected timing**                | **Estimated price impact**        | **How I’ll know**                                                                                                             |
 |--------------------------------|------------------------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| Q2 FY2027 report               | Mid-to-late Dec 2026               | ±7% (my estimate)                 | Adjusted operating cash flow as a share of EBITDA. Above 30% supports the base case; near 28% is a warning                    |
+| Q2 FY2027 report               | Late Dec 2026 or early Jan 2027                | ±7% (my estimate)                 | Adjusted operating cash flow as a share of EBITDA. Above 30% supports the base case; near 28% is a warning                    |
 | Deal closes                    | By Feb 2027                        | Up to +7%                         | Closing 8-K. Removes the deal overhang; the measured deal penalty was about 7 to 9 points                                     |
 | First full combined quarter    | Q4 FY2027 report, around July 2027 | About +9%                         | Combined EBITDA margin near 16%. Re-rating from today’s 14.1x to 15x is worth about \$126                                     |
 | First synergy update           | Same report                        | About +5%                         | Run-rate savings on track for 25% in FY2028 (about \$19M, worth about \$6 a share at 15x)                                     |
 | FAA licensing equivalency list | Pending, no date set               | About -9% if MRO’s countries miss | FAA rulemaking. If El Salvador, Mexico or Colombia don’t qualify, MRO’s margin could drop up to 5 points (about \$10 a share) |
 
-*Price impacts are measured from \$116.62, using the model’s
-sensitivities. The December figure is my judgment, since that report
+*Price impacts are measured from \$115.61, the Nov 10 close, using the model’s sensitivities. The figure for the next report is my judgment, since that report
 mainly sets which leverage path applies.*
 
 ## What Would Change My Mind
@@ -736,7 +732,7 @@ are mostly U.S. airlines.
 | Target / exit multiple        | 12x      | 15x       | 16x       |
 | Long-term growth              | 2%       | 3%        | 3.5%      |
 | **Value per share**           | **\$78** | **\$157** | **\$208** |
-| **Return from current**       | **-32%** | **+36%**  | **+80%**  |
+| **Return from \$115.61 (Nov 10)**        | **-32%** | **+36%**  | **+80%**  |
 
 *Each value averages a multiple-based 12-month target and a DCF rolled
 forward one year, the same method as the base-case target.*
@@ -745,7 +741,7 @@ forward one year, the same method as the base-case target.*
 
 **Worst case**: growth slows to 5%, MRO’s margin falls to 24%, only 60%
 of synergies arrive, and the stock is valued on cash flow alone with 2%
-long-term growth: about \$48 a share, \$58 from today’s price.
+long-term growth: about \$48 a share, 58% below the Nov 10 close of \$115.61.
 
 **Portfolio impact**: at a 10% weight, the worst case costs about 6% of
 the portfolio.
