@@ -1,0 +1,59 @@
+name: Site
+
+# Rebuilds and publishes the site when main changes, and every morning after a trading day
+# with the previous close. The morning run happens before anything else uses the day's
+# free data requests.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '20 11 * * 2-6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Update closing prices
+        if: github.event_name != 'push'
+        env:
+          ALPHAVANTAGE_KEY: ${{ secrets.ALPHAVANTAGE_KEY }}
+        run: node scripts/update_prices.mjs
+
+      - name: Save updated prices
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data
+          git diff --cached --quiet || (git commit -m "Update closing prices" && git push)
+
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

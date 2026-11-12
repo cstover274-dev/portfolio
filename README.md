@@ -6,7 +6,7 @@ The code and research behind my equity portfolio site: a real-money, long-only p
 
 - `src/content/holdings/` has one text file per holding. The thesis, the "right when" and "wrong if" signals and the update log all live there.
 - `src/data/portfolio.json` lists the holdings, the target allocation and the benchmarks. Positions are stored as scaled units, so the site shows weights and returns but no dollar amounts.
-- `src/data/prices.json` holds the latest closing prices.
+- `src/data/prices.json` holds the latest closing prices, and `src/data/history.json` the daily performance history. `scripts/update_prices.mjs` refreshes both each morning.
 - `src/pages/` has the page templates.
 - `src/charts/` has the figures used in write-ups, drawn by the scripts in `scripts/`.
 

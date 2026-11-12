@@ -4,6 +4,7 @@ import { href, fmtDate, pct, usd } from '../lib/site.js';
 import { getPortfolio } from '../lib/portfolio.js';
 import { writeups, writeupFor } from '../lib/research.js';
 import research from '../data/research.json';
+import history from '../data/history.json';
 
 const p = getPortfolio();
 const slices = [...p.rows, p.cash];
@@ -22,6 +23,31 @@ const donutLabel = 'Holdings by weight: ' + slices.map((s) => `${s.short ?? 'cas
 const scale = Math.max(35, Math.ceil(Math.max(...p.legs.map((l) => Math.max(l.weight, l.band[1]))) / 5) * 5);
 const w = (n) => `${Math.min(100, (n / scale) * 100).toFixed(1)}%`;
 const statusLabel = { under: 'Under band', in: 'In band', over: 'Over band' };
+
+// Performance chart: three lines, each showing total return since launch.
+const lines = [
+  { key: 'portfolio', name: 'Portfolio', color: '#2B63A8' },
+  { key: 'blend', name: 'Sector blend', color: '#B8780A' },
+  { key: 'market', name: 'S&P 500', color: '#0A9480' },
+];
+const showChart = history.length >= 2;
+const chart = { w: 760, h: 300, x0: 48, x1: 640, top: 44, bottom: 262 };
+const ret = (v) => v - 100;
+const all = history.flatMap((d) => lines.map((l) => ret(d[l.key])));
+const step = (Math.max(...all, 0) - Math.min(...all, 0)) > 12 ? 5 : (Math.max(...all, 0) - Math.min(...all, 0)) > 4 ? 2 : 1;
+const lo = Math.floor(Math.min(...all, 0) / step) * step;
+const hi = Math.max(Math.ceil(Math.max(...all, 0) / step) * step, lo + step);
+const cx = (i) => chart.x0 + (history.length > 1 ? (i / (history.length - 1)) * (chart.x1 - chart.x0) : 0);
+const cy = (v) => chart.top + ((hi - v) / (hi - lo)) * (chart.bottom - chart.top);
+const ticks = [];
+for (let t = lo; t <= hi + 1e-9; t += step) ticks.push(t);
+const signedPct = (v) => (v >= 0 ? '+' : '\u2212') + Math.abs(v).toFixed(1) + '%';
+const lastPoint = history.at(-1);
+// End labels, nudged apart so they never overlap.
+const ends = lines
+  .map((l) => ({ ...l, value: ret(lastPoint[l.key]), y: cy(ret(lastPoint[l.key])) }))
+  .sort((a, b) => a.y - b.y);
+ends.forEach((e, i) => { if (i > 0 && e.y - ends[i - 1].y < 16) e.y = ends[i - 1].y + 16; });
 
 const latest = writeups.find((x) => x.status === 'full') ?? writeups[0];
 const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
@@ -140,7 +166,37 @@ const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
   <section class="section">
     <h2>Performance</h2>
     <p class="lede">Measured from {fmtDate(p.launchDate)} against a sector blend matching the target allocation ({p.benchmark.blend.map((b) => b.ticker).join(', ')}) and against the S&amp;P 500 ({p.benchmark.market}). Total return, dividends included.</p>
-    <p class="note">The chart appears here once there's enough history to plot. No returns are shown for any period before the tracking date.</p>
+    {showChart ? (
+      <figure style="margin: 0; max-width: 760px">
+        <svg class="chart" viewBox={`0 0 ${chart.w} ${chart.h}`} role="img" aria-label={`Total return since ${fmtDate(p.launchDate)}: ` + ends.map((e) => `${e.name} ${signedPct(e.value)}`).join(', ')}>
+          {lines.map((l, i) => (
+            <g>
+              <line x1={i * 150} y1="14" x2={i * 150 + 18} y2="14" stroke={l.color} stroke-width="2" />
+              <text x={i * 150 + 24} y="18">{l.name}</text>
+            </g>
+          ))}
+          {ticks.map((t) => (
+            <g>
+              <line class={t === 0 ? 'axis' : 'grid'} x1={chart.x0} y1={cy(t)} x2={chart.x1} y2={cy(t)} />
+              <text x={chart.x0 - 8} y={cy(t) + 4} text-anchor="end">{t === 0 ? '0%' : signedPct(t).replace('.0', '')}</text>
+            </g>
+          ))}
+          {lines.map((l) => (
+            <polyline fill="none" stroke={l.color} stroke-width="2" stroke-linejoin="round" points={history.map((d, i) => `${cx(i).toFixed(1)},${cy(ret(d[l.key])).toFixed(1)}`).join(' ')} />
+          ))}
+          {ends.map((e) => (
+            <g>
+              <circle cx={chart.x1} cy={cy(e.value)} r="4" fill={e.color} stroke="#fff" stroke-width="2"><title>{e.name}: {signedPct(e.value)}</title></circle>
+              <text class="v" x={chart.x1 + 12} y={e.y + 4}>{e.name} {signedPct(e.value)}</text>
+            </g>
+          ))}
+          <text x={chart.x0} y={chart.bottom + 24}>{fmtDate(history[0].date)}</text>
+          <text x={chart.x1} y={chart.bottom + 24} text-anchor="end">{fmtDate(lastPoint.date)}</text>
+        </svg>
+      </figure>
+    ) : (
+      <p class="note">Tracking began at the {fmtDate(p.launchDate)} close. The chart appears here after the next trading day. No returns are shown for any period before the tracking date.</p>
+    )}
   </section>
 
   <section class="section split" style="padding-bottom: 0">
