@@ -27,7 +27,7 @@ nextUpdate: "Next update expected within a week of the fiscal Q2 earnings report
 files: {}               # report: /files/aar-report.pdf, model: /files/aar-model.xlsx, article: https://...
 log:
   - date: "2026-11-11"
-    note: "Published. Tracking starts at the Nov 11 close."
+    note: "Published. Tracking starts at the Nov 11 close of $114.17."
   - date: "2026-10-26"
     note: "Bought AIR at $97.50 and began research."
 ---

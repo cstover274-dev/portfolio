@@ -31,7 +31,7 @@ const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
     <p class="eyebrow">Long-only equity · Real money · Built out over time</p>
     <h1 style="max-width: 820px">Long-term positions in energy infrastructure, aerospace and defense, and the software defense runs on.</h1>
     <p style="margin-top: 16px; max-width: 720px; font-size: 17px; line-height: 1.6; color: var(--body)">
-      This is my own money in a small number of companies I've researched. Every holding has a written thesis dated before the outcome, and I post an update after each earnings report.
+      This is my own money in a small number of companies I’ve researched. Every holding has a written thesis dated before the outcome. I post an update after each earnings report.
     </p>
   </section>
 
@@ -120,7 +120,7 @@ const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
                 <td class="right">{pct(r.weight)}</td>
                 <td>{fmtDate(r.bought.date)} · {usd(r.bought.price)}</td>
                 <td>{fmtDate(r.tracked.date)}{r.tracked.price ? ` · ${usd(r.tracked.price)}` : ''}</td>
-                <td class="right">{r.sinceTracked === null ? <span class="muted">From launch</span> : pct(r.sinceTracked)}</td>
+                <td class="right">{r.sinceTracked === null || p.asOf === r.tracked.date ? <span class="muted">Starts today</span> : pct(r.sinceTracked)}</td>
                 <td><a href={link}>{wu?.status === 'full' ? 'Full write-up' : 'Preliminary thesis'}</a></td>
               </tr>
             );
@@ -170,7 +170,7 @@ const latestHolding = p.rows.find((r) => r.ticker === latest.ticker);
   <section class="section" style="margin-top: 40px; padding-bottom: 0">
     <h2 style="margin-bottom: 12px">About this project</h2>
     <p style="max-width: 720px; font-size: 16px; line-height: 1.6; color: var(--body)">
-      This is a personal project. I'm doing it to get my research out where people can read it, and I'm open to feedback. If you think I've missed something or got a number wrong, I'd like to hear it.
+      This is a personal project. I share my research and am open to feedback. If you think I’ve missed something or got a number wrong, I’d like to hear it.
     </p>
     <p style="margin-top: 12px; font-size: 16px">
       <a href={`mailto:${p.contact.email}`}>{p.contact.email}</a> · <a href={p.contact.linkedin}>LinkedIn</a>

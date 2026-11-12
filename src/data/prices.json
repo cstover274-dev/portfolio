@@ -1,11 +1,16 @@
 {
-  "asOf": "2026-11-06",
-  "note": "Closing prices. Replaced by the daily update once the site is live.",
+  "asOf": "2026-11-11",
+  "note": "Closing prices.",
   "closes": {
-    "AIR": 109.21,
-    "CACI": 611.16,
-    "KMI": 29.96,
-    "KTOS": 35.1,
-    "ETN": 341.72
+    "AIR": 114.17,
+    "CACI": 645.88,
+    "KMI": 31.59,
+    "KTOS": 36.69,
+    "ETN": 360.62,
+    "BIL": 91.5,
+    "GRID": 162.54,
+    "MLPX": 71.55,
+    "ITA": 73.24,
+    "SPY": 759.81
   }
 }

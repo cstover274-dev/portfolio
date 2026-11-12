@@ -44,7 +44,7 @@ const log = wu.log ?? [];
         <div><dt>Bought</dt><dd>{fmtDate(h.bought.date)} · {usd(h.bought.price)}</dd></div>
         <div><dt>Tracked since</dt><dd>{fmtDate(h.tracked.date)}{h.tracked.price ? ` · ${usd(h.tracked.price)}` : ''}</dd></div>
         <div><dt>Price ({fmtDate(p.asOf)})</dt><dd>{usd(h.price)}</dd></div>
-        {h.sinceTracked !== null && <div><dt>Return since tracked</dt><dd>{pct(h.sinceTracked)}</dd></div>}
+        {h.sinceTracked !== null && p.asOf !== h.tracked.date && <div><dt>Return since tracked</dt><dd>{pct(h.sinceTracked)}</dd></div>}
         {range && <div><dt>Value range: bear / base / bull</dt><dd><strong>${range.bear} / ${range.base} / ${range.bull}</strong></dd></div>}
         {range && <div><dt>Return to base / to bear</dt><dd>{signed(toward(range.base))} / {signed(toward(range.bear))}</dd></div>}
         <div><dt>Weight / target for the leg</dt><dd>{pct(h.weight)} / {leg.target}%</dd></div>

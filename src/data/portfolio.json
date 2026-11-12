@@ -87,7 +87,17 @@
         "weight": 5
       }
     ],
-    "market": "SPY"
+    "market": "SPY",
+    "start": {
+      "date": "2026-11-11",
+      "prices": {
+        "GRID": 162.54,
+        "MLPX": 71.55,
+        "ITA": 73.24,
+        "BIL": 91.5,
+        "SPY": 759.81
+      }
+    }
   },
   "holdings": [
     {
@@ -96,14 +106,14 @@
       "short": "AAR",
       "exchange": "NYSE",
       "leg": "commercial",
-      "units": 0.239077,
+      "units": 0.229307,
       "bought": {
         "date": "2026-10-26",
         "price": 97.5
       },
       "tracked": {
         "date": "2026-11-11",
-        "price": null
+        "price": 114.17
       }
     },
     {
@@ -112,14 +122,14 @@
       "short": "CACI",
       "exchange": "NYSE",
       "leg": "software",
-      "units": 0.037296,
+      "units": 0.035772,
       "bought": {
         "date": "2025-02-11",
         "price": 375.0
       },
       "tracked": {
         "date": "2026-11-11",
-        "price": null
+        "price": 645.88
       }
     },
     {
@@ -128,14 +138,14 @@
       "short": "Kinder Morgan",
       "exchange": "NYSE",
       "leg": "gas",
-      "units": 0.551373,
+      "units": 0.528839,
       "bought": {
         "date": "2025-02-11",
         "price": 25.37
       },
       "tracked": {
         "date": "2026-11-11",
-        "price": null
+        "price": 31.59
       }
     },
     {
@@ -144,14 +154,14 @@
       "short": "Kratos",
       "exchange": "Nasdaq",
       "leg": "defense",
-      "units": 0.424848,
+      "units": 0.407486,
       "bought": {
         "date": "2025-02-11",
         "price": 32.92
       },
       "tracked": {
         "date": "2026-11-11",
-        "price": null
+        "price": 36.69
       }
     },
     {
@@ -160,22 +170,22 @@
       "short": "Eaton",
       "exchange": "NYSE",
       "leg": "grid",
-      "units": 0.030262,
+      "units": 0.029025,
       "bought": {
         "date": "2025-02-11",
         "price": 308.11
       },
       "tracked": {
         "date": "2026-11-11",
-        "price": null
+        "price": 360.62
       }
     }
   ],
   "cash": {
     "label": "Cash",
     "heldIn": "BIL",
-    "units": 9.324018,
-    "unitPrice": 1
+    "units": 0.093901,
+    "unitPrice": 91.5
   },
   "contact": {
     "email": "cstover274@gmail.com",

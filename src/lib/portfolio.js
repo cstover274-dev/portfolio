@@ -26,7 +26,9 @@ export function getPortfolio() {
   const legs = data.legs.map((leg) => {
     const members = rows.filter((r) => r.leg === leg.id);
     const weight = leg.id === 'cash' ? cash.weight : members.reduce((s, r) => s + r.weight, 0);
-    const status = weight < leg.band[0] ? 'under' : weight > leg.band[1] ? 'over' : 'in';
+    // Judge the band on the same one-decimal figure the page shows, so the tag and the number agree.
+    const shown = Math.round(weight * 10) / 10;
+    const status = shown < leg.band[0] ? 'under' : shown > leg.band[1] ? 'over' : 'in';
     return { ...leg, weight, status, tickers: members.map((m) => m.ticker) };
   });
 
