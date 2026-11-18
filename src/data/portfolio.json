@@ -156,8 +156,9 @@
       "leg": "defense",
       "units": 0.407486,
       "bought": {
-        "date": "2025-02-11",
-        "price": 32.92
+        "date": "2025-04-30",
+        "price": 33.92,
+        "note": "Sold 86 of 91 shares Sept 29, 2025; bought back 86 at $39.17 Oct 19, 2026"
       },
       "tracked": {
         "date": "2026-11-11",

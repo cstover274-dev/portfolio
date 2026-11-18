@@ -1,0 +1,37 @@
+<svg class="chart" viewBox="0 0 760 330" role="img" aria-label="Bridge from an 8.9% adjusted EBITDA margin in 2026 to 10.2% in 2036" xmlns="http://www.w3.org/2000/svg">
+<text x="0.0" y="18.0" text-anchor="start" class="t">SG&amp;A does nearly all the work</text>
+<text x="0.0" y="38.0" text-anchor="start">Adjusted EBITDA margin, my definition. Axis starts at 6% to show the steps.</text>
+<line class="grid" x1="56" y1="284.0" x2="744" y2="284.0"/>
+<text x="48.0" y="288.0" text-anchor="end">6%</text>
+<line class="grid" x1="56" y1="227.0" x2="744" y2="227.0"/>
+<text x="48.0" y="231.0" text-anchor="end">8%</text>
+<line class="grid" x1="56" y1="170.0" x2="744" y2="170.0"/>
+<text x="48.0" y="174.0" text-anchor="end">10%</text>
+<line class="grid" x1="56" y1="113.0" x2="744" y2="113.0"/>
+<text x="48.0" y="117.0" text-anchor="end">12%</text>
+<line class="grid" x1="56" y1="56.0" x2="744" y2="56.0"/>
+<text x="48.0" y="60.0" text-anchor="end">14%</text>
+<path d="M75.3,284.0 L75.3,205.2 Q75.3,201.2 79.3,201.2 L147.3,201.2 Q151.3,201.2 151.3,205.2 L151.3,284.0 Z" fill="#2B63A8"><title>2026E margin: 8.9%</title></path>
+<text x="113.3" y="193.2" text-anchor="middle" class="v">8.9%</text>
+<line class="axis" x1="151.3" y1="201.2" x2="190.0" y2="201.2"/>
+<text x="113.3" y="308.0" text-anchor="middle" class="cat">2026E margin</text>
+<path d="M190.0,201.2 L190.0,191.6 Q190.0,189.6 192.0,189.6 L264.0,189.6 Q266.0,189.6 266.0,191.6 L266.0,201.2 Z" fill="#0A9480"><title>Gross margin: +0.4 points</title></path>
+<text x="228.0" y="181.6" text-anchor="middle" class="v">+0.4 pts</text>
+<line class="axis" x1="266.0" y1="189.6" x2="304.7" y2="189.6"/>
+<text x="228.0" y="308.0" text-anchor="middle" class="cat">Gross margin</text>
+<path d="M304.7,189.6 L304.7,66.1 Q304.7,64.1 306.7,64.1 L378.7,64.1 Q380.7,64.1 380.7,66.1 L380.7,189.6 Z" fill="#0A9480"><title>SG&amp;A leverage: +4.4 points</title></path>
+<text x="342.7" y="56.1" text-anchor="middle" class="v">+4.4 pts</text>
+<line class="axis" x1="380.7" y1="64.1" x2="419.3" y2="64.1"/>
+<text x="342.7" y="308.0" text-anchor="middle" class="cat">SG&amp;A leverage</text>
+<path d="M419.3,64.1 L419.3,63.8 Q419.3,63.6 419.6,63.6 L495.1,63.6 Q495.3,63.6 495.3,63.8 L495.3,64.1 Z" fill="#0A9480"><title>R&amp;D and M&amp;A: +0.0 points</title></path>
+<text x="457.3" y="55.6" text-anchor="middle" class="v">+0.0 pts</text>
+<line class="axis" x1="495.3" y1="63.6" x2="534.0" y2="63.6"/>
+<text x="457.3" y="308.0" text-anchor="middle" class="cat">R&amp;D and M&amp;A</text>
+<path d="M534.0,63.6 L534.0,162.8 Q534.0,164.8 536.0,164.8 L608.0,164.8 Q610.0,164.8 610.0,162.8 L610.0,63.6 Z" fill="#B5532E"><title>D&amp;A and stock comp: -3.6 points</title></path>
+<text x="572.0" y="180.8" text-anchor="middle" class="v">−3.6 pts</text>
+<line class="axis" x1="610.0" y1="164.8" x2="648.7" y2="164.8"/>
+<text x="572.0" y="308.0" text-anchor="middle" class="cat">D&amp;A and stock comp</text>
+<path d="M648.7,284.0 L648.7,168.8 Q648.7,164.8 652.7,164.8 L720.7,164.8 Q724.7,164.8 724.7,168.8 L724.7,284.0 Z" fill="#2B63A8"><title>2036E margin: 10.2%</title></path>
+<text x="686.7" y="156.8" text-anchor="middle" class="v">10.2%</text>
+<text x="686.7" y="308.0" text-anchor="middle" class="cat">2036E margin</text>
+</svg>

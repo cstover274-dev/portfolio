@@ -145,6 +145,7 @@ ol.points { margin: 0; padding-left: 20px; font-family: var(--serif); font-size:
 .prose th { white-space: nowrap; }
 .prose td { min-width: 72px; }
 .prose p > em:only-child { font-size: 13px; color: var(--muted); }
+.prose img { display: block; max-width: 760px; width: 100%; height: auto; margin: 28px 0 8px; border: 1px solid var(--rule); }
 .prose figure { margin: 28px 0 8px; max-width: 760px; }
 
 /* Figures drawn by scripts/aar_charts.py */
@@ -153,6 +154,7 @@ ol.points { margin: 0; padding-left: 20px; font-family: var(--serif); font-size:
 .chart text.t { font-size: 15px; font-weight: 600; fill: var(--ink); }
 .chart text.v { font-weight: 500; fill: var(--ink); }
 .chart text.cat { font-size: 13px; fill: var(--ink); }
+.chart text.halo { paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
 .chart .grid { stroke: var(--soft); stroke-width: 1; }
 .chart .axis { stroke: #aeb6c0; stroke-width: 1; }
 

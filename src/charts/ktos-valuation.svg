@@ -1,0 +1,39 @@
+<svg class="chart" viewBox="0 0 760 360" role="img" aria-label="Value ranges by method against the 33.91 dollar share price" xmlns="http://www.w3.org/2000/svg">
+<text x="0.0" y="18.0" text-anchor="start" class="t">Every method I trust sits below the price</text>
+<text x="0.0" y="38.0" text-anchor="start">Value per share by method, bear to bull. Line: $33.91 on Nov 13.</text>
+<line class="grid" x1="170.0" y1="56" x2="170.0" y2="296"/>
+<text x="170.0" y="314.0" text-anchor="middle">$0</text>
+<line class="grid" x1="252.0" y1="56" x2="252.0" y2="296"/>
+<text x="252.0" y="314.0" text-anchor="middle">$20</text>
+<line class="grid" x1="334.0" y1="56" x2="334.0" y2="296"/>
+<text x="334.0" y="314.0" text-anchor="middle">$40</text>
+<line class="grid" x1="416.0" y1="56" x2="416.0" y2="296"/>
+<text x="416.0" y="314.0" text-anchor="middle">$60</text>
+<line class="grid" x1="498.0" y1="56" x2="498.0" y2="296"/>
+<text x="498.0" y="314.0" text-anchor="middle">$80</text>
+<line class="grid" x1="580.0" y1="56" x2="580.0" y2="296"/>
+<text x="580.0" y="314.0" text-anchor="middle">$100</text>
+<line class="grid" x1="662.0" y1="56" x2="662.0" y2="296"/>
+<text x="662.0" y="314.0" text-anchor="middle">$120</text>
+<line class="grid" x1="744.0" y1="56" x2="744.0" y2="296"/>
+<text x="744.0" y="314.0" text-anchor="middle">$140</text>
+<line x1="309.0" y1="50" x2="309.0" y2="296" stroke="#B5532E" stroke-width="2"/>
+<text x="160.0" y="81.0" text-anchor="end" class="cat">DCF, perpetual growth</text>
+<rect x="195.8" y="66" width="45.1" height="20" rx="3" fill="#2B63A8"><title>DCF, perpetual growth: $6.30 to $17.29</title></rect>
+<text x="248.9" y="81.0" text-anchor="start" class="v halo">$6.30 to $17.29</text>
+<text x="160.0" y="121.0" text-anchor="end" class="cat">DCF, 12x exit</text>
+<rect x="216.5" y="106" width="70.0" height="20" rx="3" fill="#2B63A8"><title>DCF, 12x exit: $11.35 to $28.42</title></rect>
+<text x="294.5" y="121.0" text-anchor="start" class="v halo">$11.35 to $28.42</text>
+<text x="160.0" y="161.0" text-anchor="end" class="cat">Sum of the parts</text>
+<rect x="279.8" y="146" width="7.4" height="20" rx="3" fill="#0A9480"><title>Sum of the parts: $26.77 to $28.57</title></rect>
+<text x="295.1" y="161.0" text-anchor="start" class="v halo">$26.77 to $28.57</text>
+<text x="160.0" y="201.0" text-anchor="end" class="cat">Peer multiple</text>
+<rect x="278.9" y="186" width="7.6" height="20" rx="3" fill="#0A9480"><title>Peer multiple: $26.56 to $28.41</title></rect>
+<text x="294.5" y="201.0" text-anchor="start" class="v halo">$26.56 to $28.41</text>
+<text x="160.0" y="241.0" text-anchor="end" class="cat">Street targets</text>
+<rect x="358.6" y="226" width="303.4" height="20" rx="3" fill="#8A929C"><title>Street targets: $46.00 to $120.00</title></rect>
+<text x="670.0" y="241.0" text-anchor="start" class="v halo">$46 to $120</text>
+<text x="160.0" y="281.0" text-anchor="end" class="cat">52-week range</text>
+<rect x="299.4" y="266" width="420.0" height="20" rx="3" fill="#8A929C"><title>52-week range: $31.57 to $134.00</title></rect>
+<text x="291.4" y="281.0" text-anchor="end" class="v halo">$32 to $134</text>
+</svg>
